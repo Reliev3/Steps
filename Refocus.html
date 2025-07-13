@@ -12,66 +12,66 @@
         /* Bauhaus/Swiss Style with a Green Accent */
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #f0f0f0; [span_0](start_span)/*[span_0](end_span) */
+            background-color: #f0f0f0;
         }
         .task-item.active .task-name {
-            color: #10B981; [span_1](start_span)/*[span_1](end_span) */
+            color: #10B981;
         }
         .task-item.completed .task-name {
-            text-decoration: line-through; [span_2](start_span)/*[span_2](end_span) */
-            color: #616161; [span_3](start_span)/*[span_3](end_span) */
+            text-decoration: line-through;
+            color: #616161;
         }
         .progress-ring-circle {
-            transition: stroke-dashoffset 0.5s linear; [span_4](start_span)/*[span_4](end_span) */
-            transform: rotate(-90deg); [span_5](start_span)/*[span_5](end_span) */
+            transition: stroke-dashoffset 0.5s linear;
+            transform: rotate(-90deg);
             transform-origin: 50% 50%;
         }
         input[type="checkbox"] {
-            appearance: none; [span_6](start_span)/*[span_6](end_span) */
-            -webkit-appearance: none; [span_7](start_span)/*[span_7](end_span) */
+            appearance: none;
+            -webkit-appearance: none;
             width: 20px;
             height: 20px;
             background-color: #e0e0e0;
             border: 2px solid #333;
             cursor: pointer;
             position: relative;
-            transition: background-color 0.2s; [span_8](start_span)/*[span_8](end_span) */
+            transition: background-color 0.2s;
         }
         input[type="checkbox"]:checked {
-            background-color: #333; [span_9](start_span)/*[span_9](end_span) */
+            background-color: #333;
         }
         /* This part creates the checkmark inside the box - now BLACKER */
         input[type="checkbox"]:checked::after {
-            content: ''; [span_10](start_span)/*[span_10](end_span) */
+            content: '';
             position: absolute;
             width: 5px;
             height: 10px;
             border: solid #000; /* Black checkmark */
-            border-width: 0 3px 3px 0; [span_11](start_span)/*[span_11](end_span) */
-            transform: rotate(45deg); [span_12](start_span)/*[span_12](end_span) */
+            border-width: 0 3px 3px 0;
+            transform: rotate(45deg);
             top: 2px;
             left: 6px;
         }
         input[type="checkbox"]:disabled {
-            cursor: not-allowed; [span_13](start_span)/*[span_13](end_span) */
-            background-color: #f5f5f5; [span_14](start_span)/*[span_14](end_span) */
+            cursor: not-allowed;
+            background-color: #f5f5f5;
             border-color: #bdbdbd;
         }
         .start-button {
-            font-weight: 600; [span_15](start_span)/*[span_15](end_span) */
-            background-color: #333; [span_16](start_span)/*[span_16](end_span) */
+            font-weight: 600;
+            background-color: #333;
             color: #f0f0f0;
             border: none;
             padding: 12px 24px;
             cursor: pointer;
-            transition: background-color 0.3s; [span_17](start_span)/*[span_17](end_span) */
+            transition: background-color 0.3s;
         }
         .start-button:disabled {
-            background-color: #9e9e9e; [span_18](start_span)/*[span_18](end_span) */
-            cursor: not-allowed; [span_19](start_span)/*[span_19](end_span) */
+            background-color: #9e9e9e;
+            cursor: not-allowed;
         }
         .completion-message {
-            transition: opacity 0.5s ease-in-out; [span_20](start_span)/*[span_20](end_span) */
+            transition: opacity 0.5s ease-in-out;
         }
     </style>
 </head>
@@ -96,7 +96,7 @@
     <audio id="timer-end-sound" src="https://actions.google.com/sounds/v1/alarms/notification_bell.ogg" preload="auto"></audio>
     <audio id="routine-complete-sound" src="https://actions.google.com/sounds/v1/cartoon/magic_chime.ogg" preload="auto"></audio>
     <script>
-        [span_21](start_span)document.addEventListener('DOMContentLoaded', () => { /*[span_21](end_span) */
+        document.addEventListener('DOMContentLoaded', () => {
             const tasks = [
                 { name: "Mindfulness", duration: 60 },
                 { name: "Answer: What am I doing?", duration: 60 },
@@ -105,18 +105,18 @@
                 { name: "Write today’s smart goals if not established", duration: 300 },
                 { name: "Calendarize day", duration: 300 }
             ];
-            const taskListContainer = document.getElementById('task-list'); [span_22](start_span)/*[span_22](end_span) */
-            const startButton = document.getElementById('start-button'); [span_23](start_span)/*[span_23](end_span) */
-            const completionMessage = document.getElementById('completion-message'); [span_24](start_span)/*[span_24](end_span) */
-            const timerEndSound = document.getElementById('timer-end-sound'); [span_25](start_span)/*[span_25](end_span) */
-            const routineCompleteSound = document.getElementById('routine-complete-sound'); [span_26](start_span)/*[span_26](end_span) */
+            const taskListContainer = document.getElementById('task-list');
+            const startButton = document.getElementById('start-button');
+            const completionMessage = document.getElementById('completion-message');
+            const timerEndSound = document.getElementById('timer-end-sound');
+            const routineCompleteSound = document.getElementById('routine-complete-sound');
 
-            let currentTaskIndex = 0; [span_27](start_span)/*[span_27](end_span) */
+            let currentTaskIndex = 0;
             let timerInterval;
             const completeTaskAndAdvance = (index) => {
-                clearInterval(timerInterval); [span_28](start_span)/*[span_28](end_span) */
-                const taskElement = document.getElementById(`task-${index}`); [span_29](start_span)/*[span_29](end_span) */
-                const checkbox = document.getElementById(`checkbox-${index}`); [span_30](start_span)/*[span_30](end_span) */
+                clearInterval(timerInterval);
+                const taskElement = document.getElementById(`task-${index}`);
+                const checkbox = document.getElementById(`checkbox-${index}`);
                 taskElement.classList.remove('active');
                 taskElement.classList.add('completed');
                 checkbox.checked = true;
@@ -124,77 +124,77 @@
                 setProgress(index, 100);
                 timerEndSound.play();
                 currentTaskIndex++;
-                activateTask(currentTaskIndex); [span_31](start_span)/*[span_31](end_span) */
+                activateTask(currentTaskIndex);
             };
             const activateTask = (index) => {
                 if (index >= tasks.length) {
-                    routineCompleteSound.play(); [span_32](start_span)/*[span_32](end_span) */
-                    completionMessage.classList.remove('hidden'); [span_33](start_span)/*[span_33](end_span) */
+                    routineCompleteSound.play();
+                    completionMessage.classList.remove('hidden');
                     setTimeout(() => completionMessage.classList.remove('opacity-0'), 10);
                     return;
                 }
-                const taskElement = document.getElementById(`task-${index}`); [span_34](start_span)/*[span_34](end_span) */
-                const checkbox = document.getElementById(`checkbox-${index}`); [span_35](start_span)/*[span_35](end_span) */
+                const taskElement = document.getElementById(`task-${index}`);
+                const checkbox = document.getElementById(`checkbox-${index}`);
                 const timerDisplay = document.getElementById(`timer-display-${index}`);
 
-                taskElement.classList.add('active'); [span_36](start_span)/*[span_36](end_span) */
+                taskElement.classList.add('active');
                 checkbox.disabled = false;
 
-                let timeLeft = tasks[index].duration; [span_37](start_span)/*[span_37](end_span) */
-                timerDisplay.textContent = `${Math.floor(timeLeft / 60)}:${(timeLeft % 60).toString().padStart(2, '0')}`; [span_38](start_span)/*[span_38](end_span) */
+                let timeLeft = tasks[index].duration;
+                timerDisplay.textContent = `${Math.floor(timeLeft / 60)}:${(timeLeft % 60).toString().padStart(2, '0')}`;
                 timerInterval = setInterval(() => {
                     timeLeft--;
                     const minutes = Math.floor(timeLeft / 60);
                     const seconds = timeLeft % 60;
-                    [span_39](start_span)timerDisplay.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`; /*[span_39](end_span) */
+                    timerDisplay.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
                     setProgress(index, ((tasks[index].duration - timeLeft) / tasks[index].duration) * 100);
                     if (timeLeft <= 0) {
-                        completeTaskAndAdvance(index); [span_40](start_span)/*[span_40](end_span) */
+                        completeTaskAndAdvance(index);
                     }
-                }, 1000); [span_41](start_span)/*[span_41](end_span) */
+                }, 1000);
             };
             const renderTasks = () => {
-                taskListContainer.innerHTML = ''; [span_42](start_span)/*[span_42](end_span) */
-                [span_43](start_span)tasks.forEach((task, index) => { /*[span_43](end_span) */
-                    const taskElement = document.createElement('div'); [span_44](start_span)/*[span_44](end_span) */
+                taskListContainer.innerHTML = '';
+                tasks.forEach((task, index) => {
+                    const taskElement = document.createElement('div');
                     taskElement.id = `task-${index}`;
                     taskElement.className = 'task-item flex items-center justify-between p-3 bg-gray-50';
 
                     taskElement.innerHTML = `
                         <div class="flex items-center space-x-4">
-                            [span_45](start_span)<input type="checkbox" id="checkbox-${index}" disabled> /*[span_45](end_span) */
-                            [span_46](start_span)<label for="checkbox-${index}" class="task-name text-lg text-gray-500">${task.name}</label> /*[span_46](end_span) */
+                            <input type="checkbox" id="checkbox-${index}" disabled>
+                            <label for="checkbox-${index}" class="task-name text-lg text-gray-500">${task.name}</label>
                         </div>
                         <div class="timer-container flex items-center space-x-3">
-                            [span_47](start_span)<span id="timer-display-${index}" class="text-lg font-mono text-gray-500">${Math.floor(task.duration / 60)}:${(task.duration % 60).toString().padStart(2, '0')}</span> /*[span_47](end_span) */
+                            <span id="timer-display-${index}" class="text-lg font-mono text-gray-500">${Math.floor(task.duration / 60)}:${(task.duration % 60).toString().padStart(2, '0')}</span>
                             <svg class="progress-ring w-10 h-10">
-                                [span_48](start_span)<circle class="progress-ring-background" stroke="#e0e0e0" stroke-width="4" fill="transparent" r="18" cx="20" cy="20"/> /*[span_48](end_span) */
-                                [span_49](start_span)<circle id="progress-circle-${index}" class="progress-ring-circle" stroke="#10B981" stroke-width="4" fill="transparent" r="18" cx="20" cy="20"/> /*[span_49](end_span) */
+                                <circle class="progress-ring-background" stroke="#e0e0e0" stroke-width="4" fill="transparent" r="18" cx="20" cy="20"/>
+                                <circle id="progress-circle-${index}" class="progress-ring-circle" stroke="#10B981" stroke-width="4" fill="transparent" r="18" cx="20" cy="20"/>
                             </svg>
                         </div>`;
-                    taskListContainer.appendChild(taskElement); [span_50](start_span)/*[span_50](end_span) */
+                    taskListContainer.appendChild(taskElement);
                     document.getElementById(`checkbox-${index}`).addEventListener('change', (e) => {
                         if (e.target.checked && index === currentTaskIndex) {
-                            [span_51](start_span)completeTaskAndAdvance(index); /*[span_51](end_span) */
+                            completeTaskAndAdvance(index);
                         }
                     });
                 });
             };
-            [span_52](start_span)const setProgress = (index, percent) => { /*[span_52](end_span) */
-                const circle = document.getElementById(`progress-circle-${index}`); [span_53](start_span)/*[span_53](end_span) */
-                if (!circle) return; [span_54](start_span)/*[span_54](end_span) */
+            const setProgress = (index, percent) => {
+                const circle = document.getElementById(`progress-circle-${index}`);
+                if (!circle) return;
                 const radius = circle.r.baseVal.value;
                 const circumference = radius * 2 * Math.PI;
-                circle.style.strokeDasharray = `${circumference} ${circumference}`; [span_55](start_span)/*[span_55](end_span) */
-                circle.style.strokeDashoffset = circumference - (percent / 100) * circumference; [span_56](start_span)/*[span_56](end_span) */
+                circle.style.strokeDasharray = `${circumference} ${circumference}`;
+                circle.style.strokeDashoffset = circumference - (percent / 100) * circumference;
             };
-            [span_57](start_span)startButton.addEventListener('click', () => { /*[span_57](end_span) */
+            startButton.addEventListener('click', () => {
                 startButton.disabled = true;
                 startButton.textContent = 'Routine in Progress...';
                 activateTask(currentTaskIndex);
             }, { once: true });
-            renderTasks(); [span_58](start_span)/*[span_58](end_span) */
-            tasks.forEach((_, index) => setProgress(index, 0)); [span_59](start_span)/*[span_59](end_span) */
+            renderTasks();
+            tasks.forEach((_, index) => setProgress(index, 0));
         });
     </script>
 </body>
